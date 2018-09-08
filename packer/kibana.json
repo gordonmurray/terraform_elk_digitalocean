@@ -1,0 +1,25 @@
+{
+  "variables": {
+    "do_token": ""
+  },
+  "builders": [
+    {
+      "droplet_name": "kibana",
+      "snapshot_name": "kibana",
+      "type": "digitalocean",
+      "ssh_username": "root",
+      "api_token": "{{ user `do_token` }}",
+      "image": "ubuntu-18-04-x64",
+      "region": "lon1",
+      "size": "512mb"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "scripts": [
+        "scripts/install_kibana.sh"
+      ]
+    }
+  ]
+}
